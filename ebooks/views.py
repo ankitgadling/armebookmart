@@ -19,8 +19,8 @@ def home(request):
 	for item in cart_items:
 		cart_item_total+=1
 	booklist=list(UserEbook.objects.all())
-	randombooklist=random.sample(booklist,4)
-	ebooks={'userbooks': randombooklist,'cart_item_total':cart_item_total}
+	#randombooklist=random.sample(booklist,4)
+	ebooks={'userbooks': booklist,'cart_item_total':cart_item_total}
 	if request.method=="GET":
 		st=request.GET.get('search')
 		if st!=None:
