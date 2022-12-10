@@ -1,0 +1,123 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomePage</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <!--navbar-->
+    {% include 'navbar.html' with navbar='cart_item_count' %}
+
+
+    <!--Carousel-->
+
+    <div id="carouselExampleCaptions" class="carousel slide size" data-bs-ride="true" data-bs-interval="1500">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/carosuel.jpg' %}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <!--<h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>-->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/python carosuel.jpg' %}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <!--<h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>-->
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/i am malala carosuel.jpg' %}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <!--<h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>-->
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!--Books-->
+    <div class="row books-center">
+      <!--User Uploaded ebooks-->
+      {% for E in userbooks %}
+      <div class="card book">
+        {% if E.cover %}
+        <img src="{{ E.cover.url }}" class="card-img-top" alt="{{E.title}}">
+        <!--<img src="{% static 'images/Rich dad poor dad.webp' %}" class="card-img-top" alt="...">-->
+        {% endif %}
+
+        <div class="card-body">
+          <h5 class="card-title">{{E.title}}</h5>
+          <p class="card-text">Rs : {{E.price}}</p>
+          <p class="card-text">Upoaded By : {{E.author}}</p>
+          {% if E.price > 0 %}
+          <a href="buy" class="View">View</a>
+          {% else %}
+          <a class="View" href="viewuserbook/{{E.slug}}">View</a>
+          {% endif %}
+          <form style="display:inline;" action="cart_add_user_item/" method="post"><button class="View" type="submit"
+              name="book_id" value="{{E.id}}">Buy</button></form>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <center><a href="allbooks" class="View">View All Books</a></center>
+  </div>
+  <!--footer-->
+  <footer>
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col">
+          <a href="aboutus">About Us</a>
+          <a href="contactus">Contact Us</a>
+        </div>
+        <div class="col">
+          <a href="#">facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+        </div>
+        <div class="col">
+          <a href="terms-and-conditions">Terms and Conditions</a>
+          <a href="#"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <!--Navbar-->
+    {% include 'navbarwithnosearch.html' %}
+
+    <!--Cart-->
+    <ul class="list-group">
+      {% if cart_items %}
+      {% for item in cart_items %}
+      <li class="list-group-item">
+        <h6 style="display: inline;"> Book Title : {{item.title}} </h6>
+        <div class="float-end">
+          <form action="del_cart_item/" method="post" class="form-inline">
+            <h6 class="cart"> Price : Rs {{item.price}}</h6>
+            <button type="submit" class="btn btn-danger" name="item_id" value="{{ item.id }}">Remove</button>
+          </form>
+        </div>
+      </li>
+      {% endfor %}
+      <li class="list-group-item" aria-current="true">
+        <div class="float-end">
+          <form action="checkout" method="post" class="form-inline">
+            {% csrf_token %}
+            <h6 class="cart">Total Price in Cart : {{cart_total}}</h6>
+
+            <button type="submit" class="btn btn-primary" name="item_id" value="">Proceed to Pay</button>
+          </form>
+        </div>
+      </li>
+      {% else %}
+      <li class="list-group-item active" aria-current="true">The Cart Is Empty<a href="allbooks" class="View">Buy Some
+          Books</a>
+      </li>
+      {% endif %}
+
+      {% for msg in messages %}
+
+      <li class="list-group-item">
+        {% if 'remove' in msg.tags %}
+        <h6>{{ msg }}</h6>
+        {% else %}
+        <h6>{{ msg }}</h6>
+        {% endif %}
+
+      </li>
+
+      {% endfor %}
+
+    </ul>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>

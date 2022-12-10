@@ -1,0 +1,138 @@
+body {
+    background-color: #B8DFD8;
+}
+
+.username {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+.size {
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.logo {
+    border-style: solid;
+    font-size: 20px;
+    color: #FFB319;
+    background-color: #D9D9D9;
+    border-radius: 43px;
+    border-color: black;
+    padding: 2px 20px 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.search-form {
+    margin: 0% -7% 0% 7%;
+    display: inline;
+    width: 62%;
+}
+
+.search {
+    display: inline;
+    width: 80%;
+    background-color: #D9D9D9;
+    border: 1px solid black;
+}
+
+.search-button {
+    width: 9%;
+    display: inline;
+    border: none;
+   /* border: 1px solid black; */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #D9D9D9;
+    border-radius: 0px 12px 12px 0px;
+    padding: 3px 20px 2px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: -10%;
+}
+
+.Button {
+    border-style: solid;
+    font-size: 20px;
+    color: black;
+    background-color: #D9D9D9;
+    border-radius: 43px;
+    padding: 2px 20px 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.books-center {
+    margin: 4% 5% 0px;
+}
+
+.book {
+    width: 23%;
+    height: 36em;
+    margin-bottom: 20px;
+    margin-right: 22px;
+    margin-left: 1px;
+}
+
+.buttons {
+    display: inline;
+}
+
+.View {
+    border-style: solid;
+    font-size: 20px;
+    color: black;
+    background-color: #D9D9D9;
+    border-radius: 43px;
+    padding: 2px 22px 3px;
+    margin: 6px;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+.pagination-center {
+    margin: 1% 39% 0px;
+}
+
+footer {
+    margin-top: 2vh;
+    padding-top: 4vh;
+    background-color: #FFB319;
+    height: 10vh;
+}
+
+footer a {
+    text-decoration: none;
+    padding: 20px 20px 20px 20px;
+}
+
+.listen {
+    margin-bottom: 2vh;
+}
+
+.cart{
+    display: inline;
+    margin-right: 10px;
+}
+.cart_icon{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    
+}
+.cartitems{
+    font-size: 10px;
+    font-weight: bold;
+    background-color:white;
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin-left: -20%;
+}
