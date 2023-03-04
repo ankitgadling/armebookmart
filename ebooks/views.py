@@ -19,8 +19,8 @@ def home(request):
 	for item in cart_items:
 		cart_item_total+=1
 	booklist=list(UserEbook.objects.all())
-	#randombooklist=random.sample(booklist,4)
-	ebooks={'userbooks': booklist,'cart_item_total':cart_item_total}
+	randombooklist=random.sample(booklist,4)
+	ebooks={'userbooks': randombooklist,'cart_item_total':cart_item_total}
 	if request.method=="GET":
 		st=request.GET.get('search')
 		if st!=None:
@@ -215,8 +215,13 @@ def convert(request):
 		book=PdfToMp3.objects.last()
 		bookurl=str(book.book.url)
 		print(bookurl)
-		path='D:\Mini Project\ankitgadling\armebookmart\media\audio'
-		pdfFileObj = open('D:/Mini Project/ankitgadling/armebookmart/'+bookurl, "rb")
+		#path='D:\Mini Project\ankitgadling\armebookmart\media\audio'
+		#dirname=os.path.dirname(path)
+		#print(dirname)
+		#D:\Mini Project\ankitgadling\armebookmart
+		print(os.getcwd())
+		#pdfFileObj = open('D:/Mini Project/ankitgadling/armebookmart/'+bookurl, "rb")
+		pdfFileObj=open(os.getcwd()+bookurl,"rb")
 		pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 		totalpages=pdfReader.numPages
 		print(totalpages)
