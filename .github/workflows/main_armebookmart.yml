@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'armebookmart'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FDD16BBDDF25403D842A2CE1F937E56E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9F1004B32EAC4266B7FA05344A795631 }}
